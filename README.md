@@ -17,7 +17,6 @@ Task-Manager is an open source, featureful app which is an effective assistant o
 - [Highlights](#highlights)
 - [Features](#features)
 - [Development](#development)
-- [Related Apps](#related-apps)
 
 
 
