@@ -22,6 +22,12 @@ public class ConfirmationTokenService {
 //        This could result in null pointer exceptions if the calling code forgets to perform the null check.
       return  confirmationTokenRepository.findByToken(token);
     }
+
+    public Optional<ConfirmationToken> getAppUser(Long id)
+    {
+        return confirmationTokenRepository.findById(id);
+    }
+//    public Optional<AppUser> get
     public int setConfirmedAt(String token){
         return confirmationTokenRepository.updateConfirmedAt(token,LocalDateTime.now());
     }

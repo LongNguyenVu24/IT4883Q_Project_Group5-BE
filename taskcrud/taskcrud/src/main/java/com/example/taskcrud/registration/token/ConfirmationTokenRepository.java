@@ -13,6 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken,Long> {
     Optional<ConfirmationToken> findByToken(String token);
+    Optional<ConfirmationToken> findById(Long id);
     //   ?1", "?2" đại diện cho tham số thứ 1 ,2 được truyền vào phương thức thực thi câu truy vấn.
     @Transactional
     @Modifying
