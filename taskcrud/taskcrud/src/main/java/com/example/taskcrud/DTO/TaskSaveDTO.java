@@ -1,63 +1,30 @@
-package com.example.taskcrud.entity;
+package com.example.taskcrud.DTO;
 
-
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 
-
-@Entity
-@Table(name = "task")
-public class Task {
-
-    @Id
-    @Column(name = "task_id", length = 50)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int taskId;
-
-    @Column(name = "task_name", length = 255)
+@AllArgsConstructor
+@NoArgsConstructor
+public class TaskSaveDTO {
     private String taskName;
 
-    @Column(name = "task_description", length = 255)
     private String taskDiscription;
 
-    @Column(name = "start_date", length = 255)
     private Date startDate;
 
-    @Column(name = "end_date", length = 255)
     private Date endDate;
 
-    @Column(name = "status_task")
     private boolean taskStatus;
 
-    @Column(name = "priority_task")
     private boolean taskPriority;
 
-    @Column(name = "repeat")
     private boolean repeat;
 
-    public Task(int taskId, String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
-        this.taskId = taskId;
-        this.taskName = taskName;
-        this.taskDiscription = taskDiscription;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.taskStatus = taskStatus;
-        this.taskPriority = taskPriority;
-        this.repeat = repeat;
-    }
 
-    public Task(String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
-    }
 
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
 
     public String getTaskName() {
         return taskName;
@@ -113,5 +80,19 @@ public class Task {
 
     public void setRepeat(boolean repeat) {
         this.repeat = repeat;
+    }
+
+    @Override
+    public String toString(){
+        return "TaskSaveDTO{" +
+
+                "   task_name='" + taskName + '\'' +
+                ", task_description='" + taskDiscription + '\'' +
+                ", start_date=" + startDate + '\'' +
+                ", end_date=" + endDate + '\'' +
+                ", status_task=" + taskStatus + '\'' +
+                ", priority_task=" + taskPriority + '\'' +
+                ", repeat=" + repeat + '\'' +
+                '}';
     }
 }
