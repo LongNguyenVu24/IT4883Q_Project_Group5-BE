@@ -47,7 +47,7 @@ Visit the project homepage to view all features in detail.
 
 ## Development
 
-This repo is responsible for the Task-Manager BE, The FE is in [FE Repo](https://github.com/LongNguyenVu24/IT4883Q_Project_Group5.git).
+This repo is responsible for the Task-Manager FE, The API is in [FE Repo](https://github.com/LongNguyenVu24/IT4883Q_Project_Group5).
 
 
 

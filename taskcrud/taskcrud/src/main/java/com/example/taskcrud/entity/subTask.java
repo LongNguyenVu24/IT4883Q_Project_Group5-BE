@@ -1,16 +1,10 @@
 package com.example.taskcrud.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name= "subTask")
-public class subTask extends Task {
+public class subTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subtask_Id", length  = 50)
@@ -24,10 +18,47 @@ public class subTask extends Task {
     @Column(name = "status")
     private boolean status;
 
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private List<subTask> subTasks;
+    public subTask(int subtaskId, String subTaskName, String step, boolean status) {
+        this.subtaskId = subtaskId;
+        this.subTaskName = subTaskName;
+        this.step = step;
+        this.status = status;
+    }
 
+    public subTask() {
+    }
+
+    public int getSubtaskId() {
+        return subtaskId;
+    }
+
+    public void setSubtaskId(int subtaskId) {
+        this.subtaskId = subtaskId;
+    }
+
+    public String getSubTaskName() {
+        return subTaskName;
+    }
+
+    public void setSubTaskName(String subTaskName) {
+        this.subTaskName = subTaskName;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }
 
 
