@@ -8,6 +8,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskUpdateDTO {
+
+    private int taskId;
     private String taskName;
 
     private String taskDiscription;
@@ -22,6 +24,14 @@ public class TaskUpdateDTO {
 
     private boolean repeat;
 
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
 
     public String getTaskName() {
         return taskName;
@@ -82,7 +92,7 @@ public class TaskUpdateDTO {
     @Override
     public String toString(){
         return "TaskUpdateDTO{" +
-
+                "   task_id='" + taskId + '\'' +
                 "   task_name='" + taskName + '\'' +
                 ", task_description='" + taskDiscription + '\'' +
                 ", start_date=" + startDate + '\'' +

@@ -41,13 +41,16 @@ public class TaskServiceImpl implements TaskService {
             List<TaskDTO> taskDTOList = new ArrayList<>();
             for (Task a:getTasks) {
                 TaskDTO taskDTO = new TaskDTO(
+
+                        a.getTaskId(),
                         a.getTaskName(),
                         a.getTaskDiscription(),
                         a.getStartDate(),
                         a.getEndDate(),
-                        a.isTaskPriority(),
                         a.isTaskStatus(),
+                        a.isTaskPriority(),
                         a.isRepeat()
+
                 );
                     taskDTOList.add(taskDTO);
             }
@@ -57,11 +60,31 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public String updateTask(TaskUpdateDTO taskUpdateDTO) {
+            if (taskRepo.existsById(taskUpdateDTO.getTaskId())) {
+                Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
+
+                task.setTaskName(taskUpdateDTO.getTaskName());
+                task.setTaskDiscription(taskUpdateDTO.getTaskName());
+                task.setStartDate(taskUpdateDTO.getStartDate());
+                task.setEndDate(taskUpdateDTO.getEndDate());
+                task.setTaskPriority(taskUpdateDTO.isTaskPriority());
+                task.setTaskStatus(taskUpdateDTO.isTaskStatus());
+                task.setRepeat(taskUpdateDTO.isRepeat());
+            } else {
+                    System.out.println("Task Id does not exist");
+            }
+
         return null;
     }
 
     @Override
     public boolean deleteTask(int taskId) {
-        return false;
+        if (taskRepo.existsById(taskId)) {
+            taskRepo.deleteById(taskId);
+        } else {
+            System.out.println("Task Id does not exist");
+        }
+
+        return true;
     }
 }

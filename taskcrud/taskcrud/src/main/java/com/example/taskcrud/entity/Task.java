@@ -37,7 +37,7 @@ public class Task {
     @Column(name = "repeat")
     private boolean repeat;
 
-    public Task(int taskId, String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    public Task(String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDiscription = taskDiscription;
@@ -48,8 +48,7 @@ public class Task {
         this.repeat = repeat;
     }
 
-    public Task(String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
-    }
+
 
     public int getTaskId() {
         return taskId;
