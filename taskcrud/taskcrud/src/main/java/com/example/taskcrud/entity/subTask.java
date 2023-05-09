@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name= "subTask")
-public class subTask {
+public class subTask  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subtask_Id", length  = 50)
