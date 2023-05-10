@@ -27,6 +27,18 @@ public class Recording  {
     @Column(name = "bytes", length = 255)
     private byte[] bytes;
 
+    public Recording(int recordingId, String recordingName, String format, String filePath, Long duration, byte[] bytes) {
+        this.recordingId = recordingId;
+        this.recordingName = recordingName;
+        this.format = format;
+        this.filePath = filePath;
+        this.duration = duration;
+        this.bytes = bytes;
+    }
+
+    public Recording() {
+    }
+
     public int getRecordingId() {
         return recordingId;
     }
