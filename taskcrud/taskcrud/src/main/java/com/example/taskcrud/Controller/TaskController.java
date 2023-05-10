@@ -42,4 +42,7 @@ public class TaskController {
         boolean deleteTask = taskService.deleteTask(taskId);
         return "deleted";
     }
+
+    @GetMapping(path = "/getGanttData")
+    public List<Gantt>
 }
