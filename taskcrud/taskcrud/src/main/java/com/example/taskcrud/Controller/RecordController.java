@@ -1,59 +1,92 @@
 package com.example.taskcrud.Controller;
 
 
-import com.example.taskcrud.Repository.RecordRepo;
-import com.example.taskcrud.entity.Recording;
-import org.hibernate.id.uuid.StandardRandomStrategy;
+import com.example.taskcrud.Repository.RecordingRepository;
+import com.example.taskcrud.entity.Recordings;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/record")
+@RequestMapping("/recording")
+@Slf4j
 public class RecordController {
 
-
     @Autowired
-    private RecordRepo recordRepo;
-    @PostMapping
-    public ResponseEntity<?>createRecording(@RequestParam("file")MultipartFile file, @Value("{fileDir}") String fileDir) {
+    private RecordingRepository recordingRepository;
+
+    @GetMapping("/testData")
+    public String testData(HttpServletRequest request){
+        log.info("[testData] da truy cap thanh cong {}", request.getHeader("thuoctinha"));
+
+        return "";
+    }
+
+    @PostMapping("/createRecording")
+    public ResponseEntity<?> createRecording(@RequestParam("file") MultipartFile file, @Value("${fileDir}") String fileDir) {
+        log.info("[createRecording] fileDir {}", fileDir);
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file.getInputStream());
             AudioFormat format = audioInputStream.getFormat();
-            Long duration = (long) (audioInputStream.getFrameLength() / format.getFrameRate()*1000);
-            String recordingName = file.getOriginalFilename();
-            String filePath = fileDir +"/" + recordingName;
+            long duration = (long) (audioInputStream.getFrameLength() / format.getFrameRate() * 1000);
+            String name = file.getOriginalFilename();
+            String filePath = fileDir + "/" + name;
             Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-            Recording recording = new Recording();
-            recording.setRecordingName(recordingName);
-            recording.setFormat(String.valueOf(format));
-            recording.setDuration(duration);
+            Recordings recordings = new Recordings();
+            recordings.setName(name);
+            recordings.setFormat(String.valueOf(format));
+            recordings.setFilePath(filePath);
+            recordings.setDuration(duration);
 
-            recordRepo.save(recording);
-            return ResponseEntity.ok().build();
-        } catch (UnsupportedAudioFileException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unsupported audio format");
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error copying file");
-        } catch (DataAccessException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving recording to database");
+            recordingRepository.save(recordings);
+
+            return ResponseEntity.ok(). build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
         }
     }
 
+    @GetMapping("/{id}/play")
+    public ResponseEntity<byte[]> playRecording(@PathVariable("id") Long id) {
+        Optional<Recordings> optionalRecordings = recordingRepository.findById(id);
+        if (optionalRecordings.isPresent()) {
+            Recordings recordings = optionalRecordings.get();
+            try {
+                Path filePath = Paths.get(getClass().getResource("/recordings" + recordings.getName()).toURI());
+                byte[] bytes = Files.readAllBytes(filePath);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                headers.setContentDisposition(ContentDisposition.builder("attachment").filename(recordings.getName()).build());
+                return  new ResponseEntity<>(bytes, headers, HttpStatus.OK);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @DeleteMapping("{id}/delete")
+    public ResponseEntity<?> deleteRecording(@PathVariable("id") Long id) {
+        try {
+            recordingRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

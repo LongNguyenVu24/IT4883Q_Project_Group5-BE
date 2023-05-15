@@ -1,10 +1,12 @@
 package com.example.taskcrud.entity;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+
 @Table(name= "subTask")
-public class subTask  {
+public class subTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subtask_Id", length  = 50)
