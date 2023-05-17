@@ -20,6 +20,10 @@ public class TaskServiceImpl implements TaskService {
         return taskRepo.findById(taskId);
     }
 
+    public List<Task> getAllTasks() {
+        return taskRepo.findAll();
+    }
+
     @Override
     public String addTask(TaskSaveDTO taskSaveDTO) {
         Task task = new Task (

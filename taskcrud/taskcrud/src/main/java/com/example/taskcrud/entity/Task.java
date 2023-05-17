@@ -3,7 +3,9 @@ package com.example.taskcrud.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 
@@ -23,10 +25,10 @@ public class Task {
     private String taskDiscription;
 
     @Column(name = "start_date", length = 255)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", length = 255)
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "status_task")
     private boolean taskStatus;
@@ -37,6 +39,8 @@ public class Task {
     @Column(name = "repeat")
     private boolean repeat;
 
+
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "task_dependency",
                 joinColumns = @JoinColumn(name = "task_id"),
@@ -46,9 +50,18 @@ public class Task {
     private Set<Task> dependentTasks;
 
 
-
-    public Task(String taskName, String taskDiscription, Date startDate, Date endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
         this.taskId = taskId;
+        this.taskName = taskName;
+        this.taskDiscription = taskDiscription;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.taskStatus = taskStatus;
+        this.taskPriority = taskPriority;
+        this.repeat = repeat;
+    }
+
+    public Task(String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
         this.taskName = taskName;
         this.taskDiscription = taskDiscription;
         this.startDate = startDate;
@@ -84,19 +97,19 @@ public class Task {
         this.taskDiscription = taskDiscription;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

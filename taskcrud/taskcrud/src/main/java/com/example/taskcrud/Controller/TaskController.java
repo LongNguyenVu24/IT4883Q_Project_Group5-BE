@@ -1,13 +1,10 @@
 package com.example.taskcrud.Controller;
 
 
-import com.example.taskcrud.DTO.GanttDTO;
 import com.example.taskcrud.DTO.TaskDTO;
 import com.example.taskcrud.DTO.TaskSaveDTO;
 import com.example.taskcrud.DTO.TaskUpdateDTO;
 import com.example.taskcrud.Impl.TaskServiceImpl;
-import com.example.taskcrud.Repository.TaskRepo;
-import com.example.taskcrud.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +42,6 @@ public class TaskController {
         return "deleted";
     }
 
-   
+
 
 }

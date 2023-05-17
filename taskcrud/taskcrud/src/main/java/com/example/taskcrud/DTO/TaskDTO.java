@@ -1,12 +1,10 @@
 package com.example.taskcrud.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 public class TaskDTO {
 
     private int taskID;
@@ -14,15 +12,19 @@ public class TaskDTO {
 
     private String taskDiscription;
 
-    private Date startDate;
+    private LocalDate startDate;
 
-    private Date endDate;
+    private LocalDate endDate;
 
     private boolean taskStatus;
 
     private boolean taskPriority;
 
     private boolean repeat;
+
+    public TaskDTO(int taskId, String taskName, String taskDiscription, java.time.LocalDate startDate, java.time.LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    }
+
 
     public int getTaskID() {
         return taskID;
@@ -48,19 +50,19 @@ public class TaskDTO {
         this.taskDiscription = taskDiscription;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -101,5 +103,7 @@ public class TaskDTO {
                 ", repeat=" + repeat + '\'' +
                 '}';
     }
+
+
 }
 
