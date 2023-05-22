@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "recordings")
@@ -16,6 +15,8 @@ public class Recordings {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "record_id", length = 255)
     private long id;
+
+
     @Column(name = "record_name", length = 255)
     private String name;
     @Column(name = "record_format", length = 255)

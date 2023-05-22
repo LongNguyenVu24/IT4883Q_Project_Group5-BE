@@ -3,7 +3,7 @@ package com.example.taskcrud.registration;
 
 import com.example.taskcrud.appuser.AppUSerRole;
 import com.example.taskcrud.appuser.AppUser;
-import com.example.taskcrud.appuser.AppUserRepository;
+import com.example.taskcrud.Repository.AppUserRepository;
 import com.example.taskcrud.appuser.AppUserService;
 import com.example.taskcrud.email.EmailSender;
 import com.example.taskcrud.registration.token.ConfirmationToken;

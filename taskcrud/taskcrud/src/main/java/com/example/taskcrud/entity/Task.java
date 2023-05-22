@@ -71,6 +71,9 @@ public class Task {
         this.repeat = repeat;
     }
 
+    public Task() {
+
+    }
 
 
     public int getTaskId() {

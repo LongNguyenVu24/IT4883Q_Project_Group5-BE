@@ -3,12 +3,14 @@ package com.example.taskcrud.Impl;
 import com.example.taskcrud.Repository.RecordingRepository;
 import com.example.taskcrud.entity.Recordings;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import java.util.Optional;
+@Service
 
 public class RecordService {
 
