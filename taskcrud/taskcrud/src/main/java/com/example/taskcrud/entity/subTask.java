@@ -1,8 +1,10 @@
 package com.example.taskcrud.entity;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+
 @Table(name= "subTask")
 public class subTask {
     @Id
