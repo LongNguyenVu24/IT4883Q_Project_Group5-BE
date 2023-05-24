@@ -8,11 +8,15 @@ import com.example.taskcrud.Impl.TaskExcelExporter;
 import com.example.taskcrud.Impl.TaskServiceImpl;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -52,5 +56,45 @@ public class TaskController {
         TaskExcelExporter exporter = new TaskExcelExporter(tasks);
         exporter.export(response);
     }
-
+    @GetMapping(path = "/completionRate")
+    public double getTaskCompletionRate() {
+        List<TaskDTO> allTasks = taskService.getAllTask();
+        long completedTasks = allTasks.stream()
+                .filter(TaskDTO::isTaskStatus)
+                .count();
+        return (double) completedTasks / allTasks.size();
+    }
+    @GetMapping(path = "/priorityDistribution")
+    public Map<String, Long> getTaskPriorityDistribution() {
+        List<TaskDTO> allTasks = taskService.getAllTask();
+        return allTasks.stream()
+                .collect(Collectors.groupingBy(task -> task.isTaskPriority() ? "High" : "Low", Collectors.counting()));
+    }
+    @GetMapping(path = "/durationAnalysis")
+    public Map<String, Double> getTaskDurationAnalysis() {
+        List<TaskDTO> allTasks = taskService.getAllTask();
+        double[] durationArray = allTasks.stream()
+                .mapToDouble(task -> Duration.between(task.getStartDate(), task.getEndDate()).toMinutes())
+                .toArray();
+        double averageDuration = Arrays.stream(durationArray).average().orElse(Double.NaN);
+        DescriptiveStatistics stats = new DescriptiveStatistics(durationArray);
+        Map<String, Double> result = new HashMap<>();
+        result.put("averageDuration", averageDuration);
+        result.put("maxDuration", stats.getMax());
+        result.put("minDuration", stats.getMin());
+        result.put("medianDuration", stats.getPercentile(50));
+        return result;
+    }
+    @GetMapping(path = "/throughputAnalysis")
+    public Map<String, Integer> getTaskThroughputAnalysis() {
+        List<TaskDTO> allTasks = taskService.getAllTask();
+        Map<String, Integer> throughputByMonth = new HashMap<>();
+        for (TaskDTO task : allTasks) {
+            LocalDate startDate = task.getStartDate();
+            String monthKey = String.format("%d-%02d", startDate.getYear(), startDate.getMonthValue());
+            int currentThroughput = throughputByMonth.getOrDefault(monthKey, 0);
+            throughputByMonth.put(monthKey, currentThroughput + 1);
+        }
+        return throughputByMonth;
+    }
 }
