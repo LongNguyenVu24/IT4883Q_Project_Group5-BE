@@ -8,8 +8,7 @@ import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "recordings")
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Recordings {
 
     @Id
@@ -27,7 +26,17 @@ public class Recordings {
     @Column(name = "record_byte", length = 255)
     private byte[] bytes;
 
+    public Recordings(long id, String name, String format, String filePath, Long duration, byte[] bytes) {
+        this.id = id;
+        this.name = name;
+        this.format = format;
+        this.filePath = filePath;
+        this.duration = duration;
+        this.bytes = bytes;
+    }
 
+    public Recordings() {
+    }
 
     public long getId() {
         return id;

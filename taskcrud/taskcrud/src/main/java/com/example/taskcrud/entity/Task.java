@@ -4,6 +4,7 @@ package com.example.taskcrud.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -39,15 +40,13 @@ public class Task {
     @Column(name = "repeat")
     private boolean repeat;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "task_subTask",
+    joinColumns = @JoinColumn(name = "task_id"),
+    inverseJoinColumns = @JoinColumn(name = "subtask_id"))
+    private List<subTask> subTasks = new ArrayList<>();
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "task_dependency",
-                joinColumns = @JoinColumn(name = "task_id"),
-                    inverseJoinColumns = @JoinColumn(name = "dependency_id"))
-            private Set<Task> dependencies;
-    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "dependencies")
-    private Set<Task> dependentTasks;
 
 
     public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
