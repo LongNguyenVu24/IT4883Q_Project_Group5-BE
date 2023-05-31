@@ -23,8 +23,9 @@ public class subTask {
     @Column(name = "status")
     private boolean status;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "subTask")
-    private List<Task> tasks = new ArrayList<>();
+   @ManyToOne
+   @JoinColumn(name = "task_id")
+   private Task task;
 
     public subTask(int subtaskId, String subTaskName, String step, boolean status) {
         this.subtaskId = subtaskId;

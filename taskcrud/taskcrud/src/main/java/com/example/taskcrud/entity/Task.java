@@ -40,10 +40,7 @@ public class Task {
     @Column(name = "repeat")
     private boolean repeat;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "task_subTask",
-    joinColumns = @JoinColumn(name = "task_id"),
-    inverseJoinColumns = @JoinColumn(name = "subtask_id"))
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<subTask> subTasks = new ArrayList<>();
 
 

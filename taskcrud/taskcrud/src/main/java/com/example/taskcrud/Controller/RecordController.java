@@ -22,12 +22,20 @@ import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/recording")
+@RequestMapping("/recordings")
 @Slf4j
 public class RecordController {
 
     @Autowired
     private RecordService recordService;
+
+    @GetMapping("/testData")
+    public String testData(HttpServletRequest request){
+        log.info("[testData] da truy cap thanh cong {}", request.getHeader("thuoctinha"));
+
+        return "";
+    }
+
 
     @PostMapping("/createRecording")
     public ResponseEntity<?> createRecording(@RequestParam("file")MultipartFile file, @Value("${fileDir}") String fileDir) {
@@ -36,6 +44,7 @@ public class RecordController {
             Recordings recordings = recordService.createRecording(file);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
+            log.error("[createRecording] Exception occurred: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -69,5 +78,4 @@ public class RecordController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
 }

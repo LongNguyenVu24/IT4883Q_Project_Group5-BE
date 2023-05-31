@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "recordings")
@@ -12,7 +11,7 @@ import org.springframework.data.annotation.Id;
 public class Recordings {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "record_id", length = 255)
     private long id;
     @Column(name = "record_name", length = 255)
@@ -25,14 +24,17 @@ public class Recordings {
     private Long duration;
     @Column(name = "record_byte", length = 255)
     private byte[] bytes;
+    @Column(name = "file_format", length = 255)
+    private String fileFormat;
 
-    public Recordings(long id, String name, String format, String filePath, Long duration, byte[] bytes) {
+    public Recordings(long id, String name, String format, String filePath, Long duration, byte[] bytes, String fileFormat) {
         this.id = id;
         this.name = name;
         this.format = format;
         this.filePath = filePath;
         this.duration = duration;
         this.bytes = bytes;
+        this.fileFormat = fileFormat;
     }
 
     public Recordings() {
@@ -84,5 +86,13 @@ public class Recordings {
 
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    public String getFileFormat() {
+        return fileFormat;
+    }
+
+    public void setFileFormat(String fileFormat) {
+        this.fileFormat = fileFormat;
     }
 }
