@@ -2,7 +2,7 @@ package com.example.taskcrud.appuser;
 
 
 import com.example.taskcrud.Repository.AppUserRepository;
-import com.example.taskcrud.registration.token.ConfirmationToken;
+//import com.example.taskcrud.registration.token.ConfirmationToken;
 import com.example.taskcrud.registration.token.ConfirmationTokenService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

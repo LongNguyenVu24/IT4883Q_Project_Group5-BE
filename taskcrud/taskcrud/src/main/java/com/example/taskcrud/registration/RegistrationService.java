@@ -6,7 +6,7 @@ import com.example.taskcrud.appuser.AppUser;
 import com.example.taskcrud.Repository.AppUserRepository;
 import com.example.taskcrud.appuser.AppUserService;
 import com.example.taskcrud.email.EmailSender;
-import com.example.taskcrud.registration.token.ConfirmationToken;
+//import com.example.taskcrud.registration.token.ConfirmationToken;
 import com.example.taskcrud.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

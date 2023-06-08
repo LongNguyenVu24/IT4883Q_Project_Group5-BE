@@ -1,14 +1,18 @@
 package com.example.taskcrud.appuser;
 
 
+import com.example.taskcrud.registration.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
+//import org.hibernate.mapping.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+
+@Data
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -17,39 +21,19 @@ import java.util.Collections;
 public class AppUser implements UserDetails {
 
     @Id
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator =  "student_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastName;
     private String email;
     private String password;
 
-    public AppUser(String firstname, String lastName, String email, String password, AppUSerRole appUSerRole
-
-//                   Boolean locked, Boolean enabled
-    ) {
-        this.firstname = firstname;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.appUSerRole = appUSerRole;
-//        this.locked = locked;
-//        this.enabled = enabled;
-    }
+    @OneToOne(mappedBy = "user")
+    private Token token;
     //    Thuộc tính EnumType.STRING được truyền vào Annotation để chỉ định rằng giá trị của enum sẽ được lưu trữ dưới dạng chuỗi (string) trong cơ sở dữ liệu.
     @Enumerated(EnumType.STRING)
     private AppUSerRole appUSerRole;
-    private Boolean locked = false;
 
-    private Boolean enabled = false;
 
 
 
@@ -97,7 +81,7 @@ public class AppUser implements UserDetails {
 //    Nếu tài khoản người dùng bị khóa, thì người dùng không thể đăng nhập vào hệ thống.
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
     //Phương thức này trả về một giá trị boolean xác định xem các thông tin xác thực của tài khoản người dùng có hết hạn hay không.
 //
@@ -111,6 +95,6 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
     }
 }
