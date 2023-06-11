@@ -1,7 +1,7 @@
 package com.example.taskcrud.appuser;
 
 
-import com.example.taskcrud.registration.token.Token;
+import com.example.taskcrud.registration.Token;
 import jakarta.persistence.*;
 import lombok.*;
 //import org.hibernate.mapping.List;
@@ -9,30 +9,27 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 @Data
-@Getter
-@Setter
-@EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 public class AppUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstname;
-    private String lastName;
+    private Integer id;
+    private String fullName;
     private String email;
     private String password;
 
-    @OneToOne(mappedBy = "user")
-    private Token token;
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
     //    Thuộc tính EnumType.STRING được truyền vào Annotation để chỉ định rằng giá trị của enum sẽ được lưu trữ dưới dạng chuỗi (string) trong cơ sở dữ liệu.
     @Enumerated(EnumType.STRING)
-    private AppUSerRole appUSerRole;
+    private AppUserRole appUSerRole;
 
 
 
@@ -45,13 +42,9 @@ public class AppUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 // tạo ra 1 grantedAuthority tu 1 tham so truền vào
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUSerRole.name());
-
-//        check xem ng dùng có quyền truy cập vào 1 tài khuyên cụ thể ko
-//        Phương thức Collections.singleton() là một phương thức tĩnh được cung cấp bởi lớp Collections trong Java,
-//        nó được sử dụng để tạo ra một Set bao gồm duy nhất một phần tử.
-//        Trong trường hợp này, phương thức singleton() được sử dụng để tạo ra một Set duy nhất chứa đối tượng authority.
-        return Collections.singleton(authority);
+//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUSerRole.name());
+        List<GrantedAuthority>grantedAuthorities = List.of(new SimpleGrantedAuthority(appUSerRole.name()));
+        return grantedAuthorities;
     }
 
     @Override
@@ -64,13 +57,10 @@ public class AppUser implements UserDetails {
         return email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
 
     @Override
     public boolean isAccountNonExpired() {

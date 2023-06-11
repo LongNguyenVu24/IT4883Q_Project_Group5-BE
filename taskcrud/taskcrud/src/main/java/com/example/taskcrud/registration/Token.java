@@ -1,13 +1,13 @@
-package com.example.taskcrud.registration.token;
+package com.example.taskcrud.registration;
 
 import com.example.taskcrud.appuser.AppUser;
 import com.example.taskcrud.appuser.TokenType;
 import jakarta.persistence.*;
-
+@Entity
 public class Token {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @GeneratedValue
+    public Integer id;
 
     @Column(nullable = false)
     public String token;
@@ -15,10 +15,12 @@ public class Token {
     public Boolean expired;
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;
-
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
-//    @ManyToOne(fetch = FetchType.LAZY)
-    @OneToOne
-    public AppUser appUser;
+    public AppUser user;
+//    @JoinColumn(name = "user_id",nullable = false)
+////    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne
+//    public AppUser appUser;
 
 }

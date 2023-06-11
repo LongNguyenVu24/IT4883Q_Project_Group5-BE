@@ -1,5 +1,5 @@
 package com.example.taskcrud.appuser;
 
-public enum AppUSerRole {
+public enum AppUserRole {
     USER,ADMIN
 }

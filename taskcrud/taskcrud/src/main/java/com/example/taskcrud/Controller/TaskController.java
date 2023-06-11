@@ -23,42 +23,42 @@ import java.util.stream.Collectors;
 @RequestMapping("api/task")
 public class TaskController {
     @Autowired
-    private TaskServiceImpl taskService;
+    private TaskServiceImpl taskServiceImpl;
 
     @PostMapping(path = "/save")
     public String saveTask(@RequestBody TaskSaveDTO taskSaveDTO) {
 
-        String taskID = taskService.addTask(taskSaveDTO);
+        String taskID = taskServiceImpl.addTask(taskSaveDTO);
         return taskID;
     }
 
     @GetMapping(path = "/getAllTasks")
     public List<TaskDTO> getAllTask() {
-        List<TaskDTO>allTasks = taskService.getAllTask();
+        List<TaskDTO>allTasks = taskServiceImpl.getAllTask();
         return allTasks;
     }
 
     @GetMapping(path = "/update")
     public String updateTask(@RequestBody TaskUpdateDTO taskUpdateDTO) {
-        String taskId = taskService.updateTask(taskUpdateDTO);
+        String taskId = taskServiceImpl.updateTask(taskUpdateDTO);
         return taskId;
     }
 
     @DeleteMapping(path = "/deletetask/{taskId}")
     public String deleteTask(@PathVariable(value = "taskId") int taskId) {
-        boolean deleteTask = taskService.deleteTask(taskId);
+        boolean deleteTask = taskServiceImpl.deleteTask(taskId);
         return "deleted";
     }
 
     @GetMapping(path = "/export")
     public void exportsTasks(HttpServletResponse response) throws IOException {
-        List<TaskDTO> tasks = taskService.getAllTask();
+        List<TaskDTO> tasks = taskServiceImpl.getAllTask();
         TaskExcelExporter exporter = new TaskExcelExporter(tasks);
         exporter.export(response);
     }
     @GetMapping(path = "/completionRate")
     public double getTaskCompletionRate() {
-        List<TaskDTO> allTasks = taskService.getAllTask();
+        List<TaskDTO> allTasks = taskServiceImpl.getAllTask();
         long completedTasks = allTasks.stream()
                 .filter(TaskDTO::isTaskStatus)
                 .count();
@@ -66,13 +66,13 @@ public class TaskController {
     }
     @GetMapping(path = "/priorityDistribution")
     public Map<String, Long> getTaskPriorityDistribution() {
-        List<TaskDTO> allTasks = taskService.getAllTask();
+        List<TaskDTO> allTasks = taskServiceImpl.getAllTask();
         return allTasks.stream()
                 .collect(Collectors.groupingBy(task -> task.isTaskPriority() ? "High" : "Low", Collectors.counting()));
     }
     @GetMapping(path = "/durationAnalysis")
     public Map<String, Double> getTaskDurationAnalysis() {
-        List<TaskDTO> allTasks = taskService.getAllTask();
+        List<TaskDTO> allTasks = taskServiceImpl.getAllTask();
         double[] durationArray = allTasks.stream()
                 .mapToDouble(task -> Duration.between(task.getStartDate(), task.getEndDate()).toMinutes())
                 .toArray();
@@ -87,7 +87,7 @@ public class TaskController {
     }
     @GetMapping(path = "/throughputAnalysis")
     public Map<String, Integer> getTaskThroughputAnalysis() {
-        List<TaskDTO> allTasks = taskService.getAllTask();
+        List<TaskDTO> allTasks = taskServiceImpl.getAllTask();
         Map<String, Integer> throughputByMonth = new HashMap<>();
         for (TaskDTO task : allTasks) {
             LocalDate startDate = task.getStartDate();

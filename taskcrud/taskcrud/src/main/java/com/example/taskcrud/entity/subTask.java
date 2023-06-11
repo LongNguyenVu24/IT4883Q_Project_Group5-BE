@@ -3,6 +3,9 @@ package com.example.taskcrud.entity;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 
 @Table(name= "subTask")
@@ -19,6 +22,10 @@ public class subTask {
 
     @Column(name = "status")
     private boolean status;
+
+   @ManyToOne
+   @JoinColumn(name = "task_id")
+   private Task task;
 
     public subTask(int subtaskId, String subTaskName, String step, boolean status) {
         this.subtaskId = subtaskId;
