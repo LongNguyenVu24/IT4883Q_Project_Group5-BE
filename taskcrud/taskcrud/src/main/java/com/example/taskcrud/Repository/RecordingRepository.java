@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @EnableJpaRepositories
 @Repository
-public interface RecordingRepository extends JpaRepository<Recordings, Long> {
+public interface RecordingRepository extends JpaRepository<Recordings, String> {
 
 }
