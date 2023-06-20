@@ -13,9 +13,7 @@ public class Recordings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "record_id", length = 255)
-    private Long id;
-
-
+    private String id;
     @Column(name = "record_name", length = 255)
     private String name;
     @Column(name = "record_format", length = 255)
@@ -29,7 +27,7 @@ public class Recordings {
     @Column(name = "file_format", length = 255)
     private String fileFormat;
 
-    public Recordings(long id, String name, String format, String filePath, Long duration, byte[] bytes, String fileFormat) {
+    public Recordings(String id, String name, String format, String filePath, Long duration, byte[] bytes, String fileFormat) {
         this.id = id;
         this.name = name;
         this.format = format;
@@ -42,11 +40,11 @@ public class Recordings {
     public Recordings() {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
