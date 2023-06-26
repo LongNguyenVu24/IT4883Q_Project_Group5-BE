@@ -40,7 +40,7 @@ public class Task {
     @Column(name = "priority_task")
     private boolean taskPriority;
 
-    @Column(name = "repeated")
+    @Column(name = "repeat_task")
     private boolean repeat;
 
     @OneToMany(mappedBy = "task")
