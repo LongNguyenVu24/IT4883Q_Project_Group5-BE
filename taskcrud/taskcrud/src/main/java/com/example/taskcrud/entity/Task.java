@@ -2,33 +2,36 @@ package com.example.taskcrud.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
-
+@Data
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "task")
 public class Task {
 
     @Id
-    @Column(name = "task_id", length = 50)
+    @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int taskId;
+    private Integer taskId;
 
-    @Column(name = "task_name", length = 255)
+    @Column(name = "task_name")
     private String taskName;
 
-    @Column(name = "task_description", length = 255)
-    private String taskDiscription;
+    @Column(name = "task_description")
+    private String taskDiscriptiona;
 
-    @Column(name = "start_date", length = 255)
-    private LocalDate startDate;
+    @Column(name = "start_date")
 
-    @Column(name = "end_date", length = 255)
+    private LocalDate startDatea;
+
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @Column(name = "status_task")
@@ -37,30 +40,30 @@ public class Task {
     @Column(name = "priority_task")
     private boolean taskPriority;
 
-    @Column(name = "repeat")
+    @Column(name = "repeat_task")
     private boolean repeat;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<subTask> subTasks = new ArrayList<>();
+    @OneToMany(mappedBy = "task")
+    private List<subTask> subTasks;
 
 
 
 
-    public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    public Task(int taskId, String taskName, String taskDiscriptiona, LocalDate startDatea, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
         this.taskId = taskId;
         this.taskName = taskName;
-        this.taskDiscription = taskDiscription;
-        this.startDate = startDate;
+        this.taskDiscriptiona = taskDiscriptiona;
+        this.startDatea = startDatea;
         this.endDate = endDate;
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
         this.repeat = repeat;
     }
 
-    public Task(String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
+    public Task(String taskName, String taskDiscriptiona, LocalDate startDatea, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
         this.taskName = taskName;
-        this.taskDiscription = taskDiscription;
-        this.startDate = startDate;
+        this.taskDiscriptiona = taskDiscriptiona;
+        this.startDatea = startDatea;
         this.endDate = endDate;
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
@@ -88,20 +91,20 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getTaskDiscription() {
-        return taskDiscription;
+    public String getTaskDiscriptiona() {
+        return taskDiscriptiona;
     }
 
-    public void setTaskDiscription(String taskDiscription) {
-        this.taskDiscription = taskDiscription;
+    public void setTaskDiscriptiona(String taskDiscription) {
+        this.taskDiscriptiona = taskDiscription;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getStartDatea() {
+        return startDatea;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartDatea(LocalDate startDate) {
+        this.startDatea = startDate;
     }
 
     public LocalDate getEndDate() {

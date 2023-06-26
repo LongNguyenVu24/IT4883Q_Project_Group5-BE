@@ -116,6 +116,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.UUID;
 
+
 @Service
 public class RecordService {
     @Autowired
@@ -194,11 +195,11 @@ public class RecordService {
 //        }
 
 
-    public Optional<Recordings> getRecordingById(String id) {
+    public Optional<Recordings> getRecordingById(Integer id) {
         return recordingRepository.findById(id);
     }
 
-    public void deleteRecordingById(String id) {
+    public void deleteRecordingById(Integer id) {
         recordingRepository.deleteById(id);
 
     }

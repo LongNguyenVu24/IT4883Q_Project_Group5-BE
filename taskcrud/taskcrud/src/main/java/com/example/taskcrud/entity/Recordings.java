@@ -6,14 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "recordings")
+@Table(name = "task_record")
 
 public class Recordings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "record_id", length = 255)
-    private String id;
+    @Column(name = "records_id", length = 255)
+    private Integer id;
     @Column(name = "record_name", length = 255)
     private String name;
     @Column(name = "record_format", length = 255)
@@ -27,7 +27,7 @@ public class Recordings {
     @Column(name = "file_format", length = 255)
     private String fileFormat;
 
-    public Recordings(String id, String name, String format, String filePath, Long duration, byte[] bytes, String fileFormat) {
+    public Recordings(Integer id, String name, String format, String filePath, Long duration, byte[] bytes, String fileFormat) {
         this.id = id;
         this.name = name;
         this.format = format;
@@ -40,11 +40,11 @@ public class Recordings {
     public Recordings() {
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

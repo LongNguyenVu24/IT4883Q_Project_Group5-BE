@@ -49,8 +49,8 @@ public class TaskServiceImpl implements TaskService {
 
                         a.getTaskId(),
                         a.getTaskName(),
-                        a.getTaskDiscription(),
-                        a.getStartDate(),
+                        a.getTaskDiscriptiona(),
+                        a.getStartDatea(),
                         a.getEndDate(),
                         a.isTaskStatus(),
                         a.isTaskPriority(),
@@ -70,16 +70,17 @@ public class TaskServiceImpl implements TaskService {
                 Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
 
                 task.setTaskName(taskUpdateDTO.getTaskName());
-                task.setTaskDiscription(taskUpdateDTO.getTaskName());
-                task.setStartDate(taskUpdateDTO.getStartDate());
+                task.setTaskDiscriptiona(taskUpdateDTO.getTaskName());
+                task.setStartDatea(taskUpdateDTO.getStartDate());
                 task.setEndDate(taskUpdateDTO.getEndDate());
                 task.setTaskPriority(taskUpdateDTO.isTaskPriority());
                 task.setTaskStatus(taskUpdateDTO.isTaskStatus());
                 task.setRepeat(taskUpdateDTO.isRepeat());
+
             } else {
                     System.out.println("Task Id does not exist");
-                }
 
+            }
         return null;
     }
 
