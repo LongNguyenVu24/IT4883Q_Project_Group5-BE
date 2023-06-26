@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/CorsConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" afterDir="false" />
     </list>
