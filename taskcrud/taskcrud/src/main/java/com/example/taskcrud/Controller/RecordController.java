@@ -150,53 +150,5 @@ public class RecordController {
         }
     }
 
-    //
-    //Beautifying voice
-    //
-    @PostMapping("/{id}/beautify")
-    public ResponseEntity<?> beautifyRecording(@PathVariable("id") String id) {
-        Optional<Recordings> optionalRecordings = recordService.getRecordingById(String.valueOf(id));
-        if (optionalRecordings.isPresent()) {
-            Recordings recordings = optionalRecordings.get();
-            try {
-                // Save the recording bytes to a temporary file
-                Path tempFile = Files.createTempFile("temp", ".wav");
-                try (InputStream inputStream = new ByteArrayInputStream(recordings.getBytes())) {
-                    Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
-                }
 
-                // Execute the Python script for voice beautification
-                String pythonScript = "AutotunePython/autotune.py"; // Update with the actual path to your modified Python script
-                String inputFile = tempFile.toString();
-                String outputFile = tempFile.getParent().resolve(tempFile.getFileName().toString().replace(".wav", "_pitch_corrected.wav")).toString();
-                String[] command = {"python", pythonScript, tempFile.toString()};
-                Process process = Runtime.getRuntime().exec(command);
-
-                // Wait for the Python script execution to complete
-                int exitCode = process.waitFor();
-                if (exitCode == 0) {
-                    // Read the beautified recording from the output file
-                    byte[] beautifiedBytes = Files.readAllBytes(Paths.get(outputFile));
-
-                    // Update the beautified recording in the database or return it as a response
-                    // update the recording in the database
-                    recordings.setBytes(beautifiedBytes);
-                    recordingRepository.save(recordings);
-
-                    // Delete the temporary input and output files
-                    Files.deleteIfExists(tempFile);
-                    Files.deleteIfExists(Paths.get(outputFile));
-
-                    return ResponseEntity.ok().build();
-                } else {
-                    // Handle the case when the Python script execution fails
-                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-                }
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            }
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }

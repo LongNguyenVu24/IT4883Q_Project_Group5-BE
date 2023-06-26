@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "recordings")
+@Table(name = "task_record")
 
 public class Recordings {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "record_id", length = 255)
     private String id;
     @Column(name = "record_name", length = 255)
