@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Recordings.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Recordings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
