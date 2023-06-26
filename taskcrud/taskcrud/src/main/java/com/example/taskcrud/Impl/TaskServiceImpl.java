@@ -76,10 +76,11 @@ public class TaskServiceImpl implements TaskService {
                 task.setTaskPriority(taskUpdateDTO.isTaskPriority());
                 task.setTaskStatus(taskUpdateDTO.isTaskStatus());
                 task.setRepeat(taskUpdateDTO.isRepeat());
+
             } else {
                     System.out.println("Task Id does not exist");
-                }
 
+            }
         return null;
     }
 

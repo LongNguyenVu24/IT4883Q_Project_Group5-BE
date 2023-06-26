@@ -38,7 +38,7 @@ public class TaskController {
         return allTasks;
     }
 
-    @GetMapping(path = "/update")
+    @PutMapping(path = "/update")
     public String updateTask(@RequestBody TaskUpdateDTO taskUpdateDTO) {
         String taskId = taskServiceImpl.updateTask(taskUpdateDTO);
         return taskId;

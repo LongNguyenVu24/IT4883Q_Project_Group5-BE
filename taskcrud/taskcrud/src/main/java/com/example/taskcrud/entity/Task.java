@@ -37,7 +37,7 @@ public class Task {
     @Column(name = "priority_task")
     private boolean taskPriority;
 
-    @Column(name = "repeat")
+    @Column(name = "repeat_task")
     private boolean repeat;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/RecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/RecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +47,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SpringwithRelationshipMaterial&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT4883Q_Project_Group5-BE&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
