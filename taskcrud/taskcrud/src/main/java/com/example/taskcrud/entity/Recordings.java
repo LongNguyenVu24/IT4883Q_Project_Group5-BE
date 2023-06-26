@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "recordings")
+@Table(name = "task_record")
 
 public class Recordings {
 
