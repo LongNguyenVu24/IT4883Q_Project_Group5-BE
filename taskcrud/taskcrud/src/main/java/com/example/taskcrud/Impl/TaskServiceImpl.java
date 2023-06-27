@@ -8,7 +8,9 @@ import com.example.taskcrud.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -95,5 +97,60 @@ public class TaskServiceImpl implements TaskService {
         return true;
     }
 
+    @Override
+    public List<TaskDTO> searchTasks(String taskName, LocalDate startDate, LocalDate endDate) {
+        List<Task> foundTasks;
 
+        if (taskName != null && startDate != null && endDate != null) {
+            // Search by taskName, startDate, and endDate
+            foundTasks = taskRepo.findByTaskNameAndStartDateAndEndDate(taskName, startDate, endDate);
+        } else if (taskName != null && startDate != null) {
+            // Search by taskName and startDate
+            foundTasks = taskRepo.findByTaskNameAndStartDate(taskName, startDate);
+        } else if (taskName != null && endDate != null) {
+            // Search by taskName and endDate
+            foundTasks = taskRepo.findByTaskNameAndEndDate(taskName, endDate);
+        } else if (startDate != null && endDate != null) {
+            // Search by startDate and endDate
+            foundTasks = taskRepo.findByStartDateAndEndDate(startDate, endDate);
+        } else if (taskName != null) {
+            // Search by taskName
+            foundTasks = taskRepo.findByTaskName(taskName);
+        } else if (startDate != null) {
+            // Search by startDate
+            foundTasks = taskRepo.findByStartDate(startDate);
+        } else if (endDate != null) {
+            // Search by endDate
+            foundTasks = taskRepo.findByEndDate(endDate);
+        } else {
+            // No search parameters provided
+            return Collections.emptyList();
+        }
+
+        return convertToTaskDTOList(foundTasks);
+    }
+
+    private List<TaskDTO> convertToTaskDTOList(List<Task> tasks) {
+        List<TaskDTO> taskDTOList = new ArrayList<>();
+
+        for (Task task : tasks) {
+            TaskDTO taskDTO = new TaskDTO(
+                    task.getTaskId(),
+                    task.getTaskName(),
+                    task.getTaskDiscription(),
+                    task.getStartDate(),
+                    task.getEndDate(),
+                    task.isTaskStatus(),
+                    task.isTaskPriority(),
+                    task.isRepeat()
+            );
+
+            taskDTOList.add(taskDTO);
+        }
+
+        return taskDTOList;
+    }
 }
+
+
+
