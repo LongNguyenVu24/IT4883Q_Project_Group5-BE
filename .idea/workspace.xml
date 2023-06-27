@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/JsonValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/GanttController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/GanttController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/RecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/CorsConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/CorsConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/TaskCrudApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/TaskCrudApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/security/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/security/config/SecurityConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -22,9 +22,18 @@ public class TaskDTO {
 
     private boolean repeat;
 
-    public TaskDTO(int taskId, String taskName, String taskDiscription, java.time.LocalDate startDate, java.time.LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
-    }
 
+
+    public TaskDTO(int taskId, String taskName, String taskDiscription, java.time.LocalDate startDate, java.time.LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+        this.taskId = taskId;
+        this.taskName = taskName;
+        this.taskDiscription = taskDiscription;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.taskStatus = taskStatus;
+        this.taskPriority = taskPriority;
+        this.repeat = repeat;
+    }
 
     public int getTaskID() {
         return taskId;
