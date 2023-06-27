@@ -49,8 +49,8 @@ public class TaskServiceImpl implements TaskService {
 
                         a.getTaskId(),
                         a.getTaskName(),
-                        a.getTaskDiscriptiona(),
-                        a.getStartDatea(),
+                        a.getTaskDiscription(),
+                        a.getStartDate(),
                         a.getEndDate(),
                         a.isTaskStatus(),
                         a.isTaskPriority(),
@@ -70,8 +70,8 @@ public class TaskServiceImpl implements TaskService {
                 Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
 
                 task.setTaskName(taskUpdateDTO.getTaskName());
-                task.setTaskDiscriptiona(taskUpdateDTO.getTaskName());
-                task.setStartDatea(taskUpdateDTO.getStartDate());
+                task.setTaskDiscription(taskUpdateDTO.getTaskName());
+                task.setStartDate(taskUpdateDTO.getStartDate());
                 task.setEndDate(taskUpdateDTO.getEndDate());
                 task.setTaskPriority(taskUpdateDTO.isTaskPriority());
                 task.setTaskStatus(taskUpdateDTO.isTaskStatus());

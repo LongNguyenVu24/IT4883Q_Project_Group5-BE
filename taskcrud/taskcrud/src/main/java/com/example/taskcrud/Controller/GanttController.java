@@ -27,7 +27,7 @@ public class GanttController {
 //        model.addAttribute("endDate", tasks.stream().map(Task::getEndDate).max(Comparator.naturalOrder()).orElse(LocalDate.now().plusDays(30)));
 //
 //        return "gantt";
-        LocalDate startDate = tasks.stream().map(Task::getStartDatea).min(Comparator.naturalOrder()).orElse(LocalDate.now());
+        LocalDate startDate = tasks.stream().map(Task::getStartDate).min(Comparator.naturalOrder()).orElse(LocalDate.now());
         LocalDate endDate = tasks.stream().map(Task::getEndDate).min(Comparator.naturalOrder()).orElse(LocalDate.now().plusDays(30));
 
         GanttResponse response = new GanttResponse(tasks, startDate, endDate);

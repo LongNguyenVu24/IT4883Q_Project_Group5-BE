@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/recordings")
+@RequestMapping(path = "/api/recordings", produces = "application/json")
 @Slf4j
 public class RecordController {
 

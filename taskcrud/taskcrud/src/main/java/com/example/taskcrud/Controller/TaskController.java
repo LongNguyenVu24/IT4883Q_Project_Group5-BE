@@ -19,8 +19,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin
-@RequestMapping("api/task")
+@CrossOrigin("http://localhost:4200")
+@RequestMapping(path = "api/task", produces = "application/json")
 public class TaskController {
     @Autowired
     private TaskServiceImpl taskServiceImpl;

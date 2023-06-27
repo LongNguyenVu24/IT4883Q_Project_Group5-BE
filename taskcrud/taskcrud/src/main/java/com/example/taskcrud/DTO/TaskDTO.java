@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class TaskDTO {
 
-    private int taskID;
+    private int taskId;
     private String taskName;
 
     private String taskDiscription;
@@ -27,11 +27,11 @@ public class TaskDTO {
 
 
     public int getTaskID() {
-        return taskID;
+        return taskId;
     }
 
     public void setTaskID(int taskID) {
-        this.taskID = taskID;
+        this.taskId = taskId;
     }
 
     public String getTaskName() {
@@ -93,7 +93,7 @@ public class TaskDTO {
     @Override
     public String toString(){
         return "TaskDTO{" +
-                "   task_id='" + taskID + '\'' +
+                "   task_id='" + taskId + '\'' +
                 "   task_name='" + taskName + '\'' +
                 ", task_description='" + taskDiscription + '\'' +
                 ", start_date=" + startDate + '\'' +

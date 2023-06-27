@@ -25,11 +25,11 @@ public class Task {
     private String taskName;
 
     @Column(name = "task_description")
-    private String taskDiscriptiona;
+    private String taskDiscription;
 
     @Column(name = "start_date")
 
-    private LocalDate startDatea;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
     private LocalDate endDate;
@@ -49,21 +49,21 @@ public class Task {
 
 
 
-    public Task(int taskId, String taskName, String taskDiscriptiona, LocalDate startDatea, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
         this.taskId = taskId;
         this.taskName = taskName;
-        this.taskDiscriptiona = taskDiscriptiona;
-        this.startDatea = startDatea;
+        this.taskDiscription = taskDiscription;
+        this.startDate = startDate;
         this.endDate = endDate;
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
         this.repeat = repeat;
     }
 
-    public Task(String taskName, String taskDiscriptiona, LocalDate startDatea, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
+    public Task(String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
         this.taskName = taskName;
-        this.taskDiscriptiona = taskDiscriptiona;
-        this.startDatea = startDatea;
+        this.taskDiscription = taskDiscription;
+        this.startDate = startDate;
         this.endDate = endDate;
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
@@ -91,20 +91,20 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getTaskDiscriptiona() {
-        return taskDiscriptiona;
+    public String getTaskDiscription() {
+        return taskDiscription;
     }
 
-    public void setTaskDiscriptiona(String taskDiscription) {
-        this.taskDiscriptiona = taskDiscription;
+    public void setTaskDiscription(String taskDiscription) {
+        this.taskDiscription = taskDiscription;
     }
 
-    public LocalDate getStartDatea() {
-        return startDatea;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStartDatea(LocalDate startDate) {
-        this.startDatea = startDate;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
@@ -137,5 +137,18 @@ public class Task {
 
     public void setRepeat(boolean repeat) {
         this.repeat = repeat;
+    }
+    @Override
+    public String toString(){
+        return "Task{" +
+                "   task_id='" + taskId + '\'' +
+                "   task_name='" + taskName + '\'' +
+                ", task_description='" + taskDiscription + '\'' +
+                ", start_date=" + startDate + '\'' +
+                ", end_date=" + endDate + '\'' +
+                ", status_task=" + taskStatus + '\'' +
+                ", priority_task=" + taskPriority + '\'' +
+                ", repeat=" + repeat + '\'' +
+                '}';
     }
 }
