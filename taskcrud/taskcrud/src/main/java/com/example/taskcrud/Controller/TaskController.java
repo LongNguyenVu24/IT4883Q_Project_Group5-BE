@@ -10,6 +10,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.format.DateTimeFormatter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -28,8 +31,8 @@ public class TaskController {
     @PostMapping(path = "/save")
     public String saveTask(@RequestBody TaskSaveDTO taskSaveDTO) {
 
-        String taskID = taskServiceImpl.addTask(taskSaveDTO);
-        return taskID;
+        String taskId = taskServiceImpl.addTask(taskSaveDTO);
+        return taskId;
     }
 
     @GetMapping(path = "/getAllTasks")
@@ -48,6 +51,21 @@ public class TaskController {
     public String deleteTask(@PathVariable(value = "taskId") int taskId) {
         boolean deleteTask = taskServiceImpl.deleteTask(taskId);
         return "deleted";
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<TaskDTO>> searchTasks(
+            @RequestParam(required = false) String taskName,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate
+    ) {
+        List<TaskDTO> tasks = taskServiceImpl.searchTasks(taskName,startDate,endDate);
+
+        if (tasks.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }   else {
+            return ResponseEntity.ok(tasks);
+        }
     }
 
     @GetMapping(path = "/export")
