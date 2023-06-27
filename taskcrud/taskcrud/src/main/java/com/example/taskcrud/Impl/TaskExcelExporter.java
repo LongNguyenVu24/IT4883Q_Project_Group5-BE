@@ -3,6 +3,8 @@ package com.example.taskcrud.Impl;
 import com.example.taskcrud.DTO.TaskDTO;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -50,18 +52,23 @@ public class TaskExcelExporter {
             row.createCell(5).setCellValue(task.isTaskStatus() ? "Complete" : "Incomplete");
             row.createCell(6).setCellValue(task.isTaskPriority() ? "High" : "Normal");
             row.createCell(7).setCellValue(task.isRepeat() ? "Yes" : "No");
+            System.out.println(row.getCell(0));
 
         }
-
+        String folderPath = "save_excel";
+        File folder = new File(folderPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        String filePath = folderPath + File.separator + "my-data.xlsx";
         //Set response headers
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        response.setHeader("Content-Disposition","attachment; filename=\"tasks.xlsx\"");
-
+        response.setHeader("Content-Disposition", "attachment; filename=my-data.xlsx");
+        FileOutputStream outputStream = new FileOutputStream(filePath);
         //Write to output stream
-        OutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         workbook.close();
         outputStream.close();
-
     }
+    
 }
