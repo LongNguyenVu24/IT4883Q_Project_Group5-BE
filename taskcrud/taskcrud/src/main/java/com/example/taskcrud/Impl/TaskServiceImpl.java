@@ -70,7 +70,6 @@ public class TaskServiceImpl implements TaskService {
     public String updateTask(TaskUpdateDTO taskUpdateDTO) {
             if (taskRepo.existsById(taskUpdateDTO.getTaskId())) {
                 Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
-
                 task.setTaskName(taskUpdateDTO.getTaskName());
                 task.setTaskDiscription(taskUpdateDTO.getTaskName());
                 task.setStartDate(taskUpdateDTO.getStartDate());
