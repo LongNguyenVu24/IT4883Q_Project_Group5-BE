@@ -132,4 +132,12 @@ return "";
         }
         return throughputByMonth;
     }
+    @GetMapping("/getImportantTasks")
+    public List<Task> getImportantTasks() {
+        return taskServiceImpl.getImportantTasks();
+    }
+    @GetMapping("/getAllCompletedTasks")
+    public List<Task> getAllCompletedTasks() {
+        return taskServiceImpl.getAllCompletedTasks();
+    }
 }

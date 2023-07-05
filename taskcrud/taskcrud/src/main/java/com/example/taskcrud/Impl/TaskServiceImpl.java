@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TaskServiceImpl implements TaskService {
 
@@ -150,6 +152,18 @@ public class TaskServiceImpl implements TaskService {
         }
 
         return taskDTOList;
+    }
+    public List<Task> getImportantTasks() {
+        List<Task> tasks = taskRepo.findAll();
+        return tasks.stream()
+                .filter(Task::isTaskPriority)
+                .collect(Collectors.toList());
+    }
+    public List<Task> getAllCompletedTasks() {
+        List<Task> tasks = taskRepo.findAll();
+        return tasks.stream()
+                .filter(Task::isTaskPriority)
+                .collect(Collectors.toList());
     }
 }
 
