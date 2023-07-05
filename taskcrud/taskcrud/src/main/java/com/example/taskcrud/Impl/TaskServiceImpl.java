@@ -32,8 +32,8 @@ public class TaskServiceImpl implements TaskService {
         Task task = new Task (
                taskSaveDTO.getTaskName(),
                 taskSaveDTO.getTaskDiscription(),
-                taskSaveDTO.getStartDate(),
-                taskSaveDTO.getEndDate(),
+                taskSaveDTO.getStartDate()!=null ? taskSaveDTO.getStartDate() : LocalDate.now(),
+                taskSaveDTO.getEndDate()!=null ?taskSaveDTO.getEndDate(): LocalDate.now(),
                 taskSaveDTO.isTaskPriority(),
                 taskSaveDTO.isTaskStatus(),
                 taskSaveDTO.isRepeat(),

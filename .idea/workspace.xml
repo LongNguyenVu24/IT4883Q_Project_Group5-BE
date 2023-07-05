@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/model/UpdatePasswordResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/save_excel/my-data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/save_excel/my-data.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskSaveDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskSaveDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/DTO/TaskUpdateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskExcelExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskExcelExporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/appuser/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/appuser/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Repository/TaskRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Repository/TaskRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/registration/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/registration/AuthenticationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/registration/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/registration/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/security/config/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/security/config/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -21,8 +23,10 @@ public class TaskExcelExporter {
         this.tasks = tasks;
 
     }
-
-    public void export(HttpServletResponse response) throws IOException {
+//    public void import(List<TaskDTO> tasks){
+//
+//    }
+    public String export(HttpServletResponse response) throws IOException {
 
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Tasks");
@@ -47,8 +51,8 @@ public class TaskExcelExporter {
             row.createCell(0).setCellValue(task.getTaskID());
             row.createCell(1).setCellValue(task.getTaskName());
             row.createCell(2).setCellValue(task.getTaskDiscription());
-            row.createCell(3).setCellValue(task.getStartDate().toString());
-            row.createCell(4).setCellValue(task.getEndDate().toString());
+            row.createCell(3).setCellValue( (task.getStartDate().toString()!=null ?task.getStartDate().toString():"".toString()));
+            row.createCell(4).setCellValue((task.getEndDate().toString()!=null ?task.getEndDate().toString(): "".toString()));
             row.createCell(5).setCellValue(task.isTaskStatus() ? "Complete" : "Incomplete");
             row.createCell(6).setCellValue(task.isTaskPriority() ? "High" : "Normal");
             row.createCell(7).setCellValue(task.isRepeat() ? "Yes" : "No");
@@ -69,6 +73,8 @@ public class TaskExcelExporter {
         workbook.write(outputStream);
         workbook.close();
         outputStream.close();
+
+        return System.getProperty("user.dir")+filePath;
     }
 
 }

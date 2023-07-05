@@ -16,4 +16,5 @@ public interface TaskRepo extends JpaRepository<Task,Integer> {
     List<Task> findByTaskName(String taskName);
     List<Task> findByStartDate(LocalDate startDate);
     List<Task> findByEndDate(LocalDate endDate);
+
 }
