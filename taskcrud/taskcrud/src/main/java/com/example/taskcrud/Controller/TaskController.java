@@ -72,10 +72,10 @@ public class TaskController {
     }
 
     @GetMapping(path = "/export")
-    public ResponseEntity<String> exportsTasks(HttpServletResponse response) throws IOException {
+    public void exportsTasks(HttpServletResponse response) throws IOException {
         List<TaskDTO> tasks = taskServiceImpl.getAllTask();
         TaskExcelExporter exporter = new TaskExcelExporter(tasks);
-      return ResponseEntity.ok(exporter.export(response));
+       exporter.export(response);
     }
     @PostMapping(path = "/import")
     public String importTasks(@RequestParam("file")MultipartFile file) throws IOException, InvalidFormatException {

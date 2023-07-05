@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -26,7 +27,7 @@ public class TaskExcelExporter {
 //    public void import(List<TaskDTO> tasks){
 //
 //    }
-    public String export(HttpServletResponse response) throws IOException {
+    public void export(HttpServletResponse response) throws IOException {
 
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Tasks");
@@ -60,21 +61,25 @@ public class TaskExcelExporter {
 
         }
         String folderPath = "save_excel";
-        File folder = new File(folderPath);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
         String filePath = folderPath + File.separator + "my-data.xlsx";
+        File file = new File(filePath);
+        Random random = new Random();
+        int randomNumber = random.nextInt(100);
+      while (file.exists()){
+          filePath = folderPath + File.separator + "my-data" + String.valueOf(randomNumber) + ".xlsx";
+          file = new File(filePath);
+      }
+
         //Set response headers
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setHeader("Content-Disposition", "attachment; filename=my-data.xlsx");
         FileOutputStream outputStream = new FileOutputStream(filePath);
         //Write to output stream
         workbook.write(outputStream);
-        workbook.close();
+//        workbook.close();
         outputStream.close();
 
-        return System.getProperty("user.dir")+filePath;
+//        return System.getProperty("user.dir")+filePath;
     }
 
 }
