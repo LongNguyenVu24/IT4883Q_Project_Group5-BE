@@ -61,7 +61,12 @@ public class AppUser implements UserDetails {
         return fullName;
     }
 
-
+    public void setPassWord(String newPassword){
+        this.password = newPassword;
+    }
+    public void setFullname(String newFullname){
+        this.fullName = newFullname;
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

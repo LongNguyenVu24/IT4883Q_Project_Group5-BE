@@ -43,13 +43,17 @@ public class Task {
     @Column(name = "repeat_task")
     private boolean repeat;
 
+    @Column(name = "parent")
+    private String parent;
     @OneToMany(mappedBy = "task")
     private List<subTask> subTasks;
 
 
 
 
-    public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+
+
+    public Task(int taskId, String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat, String parent) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDiscription = taskDiscription;
@@ -58,9 +62,10 @@ public class Task {
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
         this.repeat = repeat;
+        this.parent = parent;
     }
 
-    public Task(String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat) {
+    public Task(String taskName, String taskDiscription, LocalDate startDate, LocalDate endDate, boolean taskPriority, boolean taskStatus, boolean repeat, String parent) {
         this.taskName = taskName;
         this.taskDiscription = taskDiscription;
         this.startDate = startDate;
@@ -68,6 +73,7 @@ public class Task {
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
         this.repeat = repeat;
+        this.parent = parent;
     }
 
     public Task() {
@@ -138,6 +144,15 @@ public class Task {
     public void setRepeat(boolean repeat) {
         this.repeat = repeat;
     }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
     @Override
     public String toString(){
         return "Task{" +
@@ -149,6 +164,7 @@ public class Task {
                 ", status_task=" + taskStatus + '\'' +
                 ", priority_task=" + taskPriority + '\'' +
                 ", repeat=" + repeat + '\'' +
+                ", parent=" + parent + '\'' +
                 '}';
     }
 }

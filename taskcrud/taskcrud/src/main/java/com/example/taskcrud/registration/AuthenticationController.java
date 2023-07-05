@@ -1,11 +1,19 @@
 package com.example.taskcrud.registration;
 
+import com.example.taskcrud.Repository.AppUserRepository;
+import com.example.taskcrud.appuser.AppUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RequestMapping("/api/v1/auth")
 @RestController
@@ -27,5 +35,9 @@ public class AuthenticationController {
     public ResponseEntity<String> authenticate(){
         return ResponseEntity.ok("Sucess");
     }
+    @PutMapping("/updatePassword")
+    public ResponseEntity<String> changeUserPassword(  @RequestParam String email, @RequestParam String newPassword, String newFullName) {
 
+      return  ResponseEntity.ok(authenticationService.changeUserPassword(email, newPassword,newFullName));
+    }
 }

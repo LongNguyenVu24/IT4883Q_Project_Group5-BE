@@ -21,10 +21,11 @@ public class TaskDTO {
     private boolean taskPriority;
 
     private boolean repeat;
+    private String parent;
 
 
 
-    public TaskDTO(int taskId, String taskName, String taskDiscription, java.time.LocalDate startDate, java.time.LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat) {
+    public TaskDTO(int taskId, String taskName, String taskDiscription, java.time.LocalDate startDate, java.time.LocalDate endDate, boolean taskStatus, boolean taskPriority, boolean repeat, String parent) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDiscription = taskDiscription;
@@ -33,6 +34,7 @@ public class TaskDTO {
         this.taskStatus = taskStatus;
         this.taskPriority = taskPriority;
         this.repeat = repeat;
+        this.parent = parent;
     }
 
     public int getTaskID() {
@@ -99,6 +101,15 @@ public class TaskDTO {
         this.repeat = repeat;
     }
 
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
     @Override
     public String toString(){
         return "TaskDTO{" +
@@ -110,6 +121,7 @@ public class TaskDTO {
                 ", status_task=" + taskStatus + '\'' +
                 ", priority_task=" + taskPriority + '\'' +
                 ", repeat=" + repeat + '\'' +
+                ", parent=" + parent + '\'' +
                 '}';
     }
 

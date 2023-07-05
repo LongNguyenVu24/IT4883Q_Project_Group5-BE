@@ -36,7 +36,8 @@ public class TaskServiceImpl implements TaskService {
                 taskSaveDTO.getEndDate(),
                 taskSaveDTO.isTaskPriority(),
                 taskSaveDTO.isTaskStatus(),
-                taskSaveDTO.isRepeat()
+                taskSaveDTO.isRepeat(),
+                taskSaveDTO.getParent()
         );
         taskRepo.save(task);
         return task.getTaskName();
@@ -56,7 +57,8 @@ public class TaskServiceImpl implements TaskService {
                         a.getEndDate(),
                         a.isTaskStatus(),
                         a.isTaskPriority(),
-                        a.isRepeat()
+                        a.isRepeat(),
+                        a.getParent()
 
                 );
                     taskDTOList.add(taskDTO);
@@ -68,22 +70,20 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public String updateTask(TaskUpdateDTO taskUpdateDTO) {
-            if (taskRepo.existsById(taskUpdateDTO.getTaskId())) {
-                Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
-
-                task.setTaskName(taskUpdateDTO.getTaskName());
-                task.setTaskDiscription(taskUpdateDTO.getTaskName());
-                task.setStartDate(taskUpdateDTO.getStartDate());
-                task.setEndDate(taskUpdateDTO.getEndDate());
-                task.setTaskPriority(taskUpdateDTO.isTaskPriority());
-                task.setTaskStatus(taskUpdateDTO.isTaskStatus());
-                task.setRepeat(taskUpdateDTO.isRepeat());
-
-            } else {
-                    System.out.println("Task Id does not exist");
-
-            }
-        return null;
+        if (taskRepo.existsById(taskUpdateDTO.getTaskId())) {
+            Task task = taskRepo.getById(taskUpdateDTO.getTaskId());
+            task.setTaskName(taskUpdateDTO.getTaskName());
+            task.setTaskDiscription(taskUpdateDTO.getTaskName());
+            task.setStartDate(taskUpdateDTO.getStartDate());
+            task.setEndDate(taskUpdateDTO.getEndDate());
+            task.setTaskPriority(taskUpdateDTO.isTaskPriority());
+            task.setTaskStatus(taskUpdateDTO.isTaskStatus());
+            task.setRepeat(taskUpdateDTO.isRepeat());
+            task.setParent(taskUpdateDTO.getParent());
+            return "Success";
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -142,7 +142,8 @@ public class TaskServiceImpl implements TaskService {
                     task.getEndDate(),
                     task.isTaskStatus(),
                     task.isTaskPriority(),
-                    task.isRepeat()
+                    task.isRepeat(),
+                    task.getParent()
             );
 
             taskDTOList.add(taskDTO);

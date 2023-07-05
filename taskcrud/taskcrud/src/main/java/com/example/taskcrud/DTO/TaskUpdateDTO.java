@@ -21,6 +21,7 @@ public class TaskUpdateDTO {
 
     private boolean repeat;
 
+    private String parent;
 
     public int getTaskId() {
         return taskId;
@@ -86,6 +87,14 @@ public class TaskUpdateDTO {
         this.repeat = repeat;
     }
 
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
     @Override
     public String toString(){
         return "TaskUpdateDTO{" +
@@ -97,6 +106,7 @@ public class TaskUpdateDTO {
                 ", status_task=" + taskStatus + '\'' +
                 ", priority_task=" + taskPriority + '\'' +
                 ", repeat=" + repeat + '\'' +
+                ", parent=" + parent + '\'' +
                 '}';
     }
 }

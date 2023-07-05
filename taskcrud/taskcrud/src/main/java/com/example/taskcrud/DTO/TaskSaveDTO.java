@@ -20,6 +20,7 @@ public class TaskSaveDTO {
     private boolean taskPriority;
 
     private boolean repeat;
+    private String parent;
 
 
     public String getTaskName() {
@@ -78,6 +79,14 @@ public class TaskSaveDTO {
         this.repeat = repeat;
     }
 
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
     @Override
     public String toString(){
         return "TaskSaveDTO{" +
@@ -89,6 +98,7 @@ public class TaskSaveDTO {
                 ", status_task=" + taskStatus + '\'' +
                 ", priority_task=" + taskPriority + '\'' +
                 ", repeat=" + repeat + '\'' +
+                ", parent=" + parent + '\'' +
                 '}';
     }
 }

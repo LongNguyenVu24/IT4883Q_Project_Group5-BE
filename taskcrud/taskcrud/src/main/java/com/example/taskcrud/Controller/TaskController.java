@@ -12,6 +12,8 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.format.DateTimeFormatter;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +31,13 @@ public class TaskController {
     private TaskServiceImpl taskServiceImpl;
 
     @PostMapping(path = "/save")
-    public String saveTask(@RequestBody TaskSaveDTO taskSaveDTO) {
-
+    public ResponseEntity<String> saveTask(@RequestBody TaskSaveDTO taskSaveDTO) {
         String taskId = taskServiceImpl.addTask(taskSaveDTO);
-        return taskId;
+        if (taskId != null) {
+            return new ResponseEntity<>(taskId, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Failed to save task", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping(path = "/getAllTasks")
@@ -41,16 +46,19 @@ public class TaskController {
         return allTasks;
     }
 
-    @PutMapping(path = "/update")
-    public String updateTask(@RequestBody TaskUpdateDTO taskUpdateDTO) {
+    @PutMapping(path = "/update/{taskId}")
+    public ResponseEntity<String> updateTask(@RequestBody TaskUpdateDTO taskUpdateDTO) {
         String taskId = taskServiceImpl.updateTask(taskUpdateDTO);
-        return taskId;
+        if (taskId != null) {
+            return new ResponseEntity<>(taskId, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Task Id does not exist", HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping(path = "/deletetask/{taskId}")
-    public String deleteTask(@PathVariable(value = "taskId") int taskId) {
+    public void deleteTask(@PathVariable(value = "taskId") int taskId) {
         boolean deleteTask = taskServiceImpl.deleteTask(taskId);
-        return "deleted";
     }
 
     @GetMapping("/search")
