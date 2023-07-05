@@ -6,6 +6,8 @@ import com.example.taskcrud.DTO.TaskSaveDTO;
 import com.example.taskcrud.DTO.TaskUpdateDTO;
 import com.example.taskcrud.Impl.TaskExcelExporter;
 import com.example.taskcrud.Impl.TaskServiceImpl;
+import com.example.taskcrud.entity.Task;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
@@ -14,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.format.DateTimeFormatter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -69,10 +72,16 @@ public class TaskController {
     }
 
     @GetMapping(path = "/export")
-    public void exportsTasks(HttpServletResponse response) throws IOException {
+    public ResponseEntity<String> exportsTasks(HttpServletResponse response) throws IOException {
         List<TaskDTO> tasks = taskServiceImpl.getAllTask();
         TaskExcelExporter exporter = new TaskExcelExporter(tasks);
-        exporter.export(response);
+      return ResponseEntity.ok(exporter.export(response));
+    }
+    @PostMapping(path = "/import")
+    public String importTasks(@RequestParam("file")MultipartFile file) throws IOException, InvalidFormatException {
+
+        List<Task> taskList = new ArrayList<>();
+return "";
     }
     @GetMapping(path = "/completionRate")
     public double getTaskCompletionRate() {

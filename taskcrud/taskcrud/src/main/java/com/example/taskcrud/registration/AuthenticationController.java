@@ -2,7 +2,9 @@ package com.example.taskcrud.registration;
 
 import com.example.taskcrud.Repository.AppUserRepository;
 import com.example.taskcrud.appuser.AppUser;
+import com.example.taskcrud.model.UpdatePasswordResponse;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.sql.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,9 +37,9 @@ public class AuthenticationController {
     public ResponseEntity<String> authenticate(){
         return ResponseEntity.ok("Sucess");
     }
-    @PutMapping("/updatePassword")
-    public ResponseEntity<String> changeUserPassword(  @RequestParam String email, @RequestParam String newPassword, String newFullName) {
+    @PostMapping("/updatePassword")
+    public ResponseEntity<String> changeUserPassword(@RequestBody UpdatePasswordResponse updatePasswordResponse) {
 
-      return  ResponseEntity.ok(authenticationService.changeUserPassword(email, newPassword,newFullName));
+      return  ResponseEntity.ok(authenticationService.changeUserPassword(updatePasswordResponse));
     }
 }

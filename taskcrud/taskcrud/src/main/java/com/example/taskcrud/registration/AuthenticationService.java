@@ -3,6 +3,7 @@ package com.example.taskcrud.registration;
 import com.example.taskcrud.Repository.AppUserRepository;
 import com.example.taskcrud.appuser.AppUser;
 import com.example.taskcrud.appuser.AppUserRole;
+import com.example.taskcrud.model.UpdatePasswordResponse;
 import com.example.taskcrud.security.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -50,10 +51,10 @@ public class AuthenticationService {
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
-    public String changeUserPassword(String email, String newPassword,String newFullname) {
-        var user = repository.findByEmail( email).orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-        user.setFullname(newFullname);
-        user.setPassWord(passwordEncoder.encode(newPassword));
+    public String changeUserPassword(UpdatePasswordResponse updatePasswordResponse) {
+        var user = repository.findByEmail( updatePasswordResponse.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User not found with email: " ));
+        user.setFullname(updatePasswordResponse.getNewFullname());
+        user.setPassWord(passwordEncoder.encode(updatePasswordResponse.getNewPassword()));
         repository.save(user);
         return "success";
     }
