@@ -192,7 +192,10 @@ public class RecordService {
 
 
     }
-//        }
+    public Optional<Recordings> removeRecording(){
+        return null;
+    }
+
 
 
     public Optional<Recordings> getRecordingById(Integer id) {

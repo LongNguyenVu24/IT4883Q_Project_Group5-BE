@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6cc50fb-383d-4c72-9a3f-aa44c00e1a54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taskcrud/taskcrud/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/RecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/java/com/example/taskcrud/Impl/RecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/taskcrud/taskcrud/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -31,30 +37,39 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2QVEXwJlofAJniomg2I3jckLU2u" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IT4883Q_Project_Group5-BE&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/IT4883Q_Project_Group5-BE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Docker.taskcrud/Dockerfile">
     <configuration name="TaskCrudApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.taskcrud.TaskCrudApplication" />
       <module name="taskcrud" />
@@ -68,8 +83,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TaskCrudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="taskcrud" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.taskcrud.TaskCrudApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="taskcrud/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="taskcrud/taskcrud/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.taskcrud/Dockerfile" />
         <item itemvalue="Application.TaskCrudApplication" />
       </list>
     </recent_temporary>
@@ -82,7 +118,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685430392116</updated>
+      <workItem from="1700756394007" duration="604000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
